@@ -65,17 +65,15 @@ Quando as funções forem divididas para cada integrante:
     "pega_ano" para converter a string "jan-2019" em "2019" (Para base de estados)<br/>
     "converte_para_data" para converter a string "jan-2019" em "2019-01-01" (Para base de cidades) (Não ta pronto)<br/>
     
-3 - Ordem das Datas: <br/>
-        Sempre que usar datas, colocar primeiro a data inicial e depois a data final<br/>
-        E incluir sempre os meses de inicio e fim<br/>
+3. Ordem das Datas: <br/>
+        Sempre que usar datas, colocar primeiro a data inicial e depois a data final, incluir na busca os meses de inicio e fim<br/>
         Exemplo: /jan-2017/ago-2019/ <br/>
                 Uma busca de janeiro de 2017 até agosto de 2019<br/>
 
 4. Nomes de Crimes e Cidades:<br/>
     Nas rotas quando o crime/cidade for formado por duas ou mais palavras, usar "-" para separa-las <br/>
     Exemplo: para a cidade "Cruzeiro do Sul" -> /Cruzeiro-do-Sul/<br/>
-    Na url o nome do crime deve ser o mesmo que o desejado para a busca<br/>
-    Pode variar entre maiúsculas e minúsculas, acentuadas e não acentuadas<br/>
+    Na url o nome do crime deve ser o mesmo que o desejado para a busca, Podendo variar entre maiúsculas e minúsculas, acentuadas e não acentuadas<br/>
     Exemplo: Para o crime "Roubo seguido de morte (latrocínio)" são aceitos os formatos:
     - /Roubo-seguido-de-morte-(latrocínio)/
     - /ROUBO-segUIdo-de-mORte-(latrocinio)/
@@ -86,8 +84,8 @@ Quando as funções forem divididas para cada integrante:
     "trata_palavra", que retorna a palavra com espaços no lugar de "-", sem acentos, e minúscula<br/>
     "trata_vetor_palavra", que aplica a função "trata_palavra" para todas as palavras de um vetor, e retorna um array<br/>
 
-5 - Se as datas estiverem invertidas na url, retornar = []<br/>
+5. Se as datas estiverem invertidas na url, retornar = []<br/>
     Exemplo: /jan-2020/fev-2019/<br/>
 
-6 - Quando houver erros na url, evitar erros no código que retornam: Internal Server Error: 500<br/>
+6. Quando houver erros na url, evitar erros no código que retornam: Internal Server Error: 500<br/>
     Usar try,except nos métodos GET, para sempre que der algo errado retornar = []<br/>
