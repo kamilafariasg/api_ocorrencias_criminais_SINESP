@@ -20,16 +20,28 @@ from Metodos_GET.GET_Renato import *
 from Metodos_GET.GET_Thiago import *
 
 # Rotas Hugo
-api.add_resource(Municipios, '/municipios') 
 api.add_resource(Est_ocorrencias, '/estados_ocorrencias')
-api.add_resource(Est_ocorrencias_estado, '/estados_ocorrencias/<sigla>')
-api.add_resource(Est_ocorrencias_estado_datas, '/estados_ocorrencias/<sigla>/<data_inicio>/<data_fim>')
+api.add_resource(Est_ocorrencias_estado, '/estados_ocorrencias/estado/<sigla>')
+api.add_resource(Est_ocorrencias_estado_datas, '/estados_ocorrencias/estado/<sigla>/<data_inicio>/<data_fim>')
 
-#api.add_resource(Est_ocorrencias_crimes, '/estados_ocorrencias/<crime>')
-#api.add_resource(Est_ocorrencias_crimes_datas, '/estados_ocorrencias/<crime>/<data_inicio>/<data_fim>')
-#api.add_resource(Est_ocorrencias_estado_crimes_datas, '/estados_ocorrencias/<estado>/<crime>/<data_inicio>/<data_fim>')
+api.add_resource(Est_ocorrencias_crimes, '/estados_ocorrencias/crime/<crime>')
+api.add_resource(Est_ocorrencias_crimes_datas, '/estados_ocorrencias/crime/<crime>/<data_inicio>/<data_fim>')
+
+api.add_resource(Est_ocorrencias_estado_crimes, '/estados_ocorrencias/estado/crime/<estado>/<crime>')
+#api.add_resource(Est_ocorrencias_estado_crimes_datas, '/estados_ocorrencias/estado/crime/<estado>/<crime>/<data_inicio>/<data_fim>')
 
 api.add_resource(Est_vitimas, '/estados_vitimas') 
+#api.add_resource(Est_vitimas_estado, '/estados_vitimas/estado/<sigla>')
+#api.add_resource(Est_vitimas_estado_datas, '/estados_vitimas/estado/<sigla>/<data_inicio>/<data_fim>')
+
+#api.add_resource(Est_vitimas_crimes, '/estados_vitimas/crime/<crime>')
+#api.add_resource(Est_vitimas_crimes_datas, '/estados_vitimas/crime/<crime>/<data_inicio>/<data_fim>')
+
+#api.add_resource(Est_vitimas_estado_crimes_datas, '/estados_vitimas/estado/crime/<estado>/<crime>/<data_inicio>/<data_fim>')
+#api.add_resource(Est_vitimas_estado_crimes, '/estados_vitimas/estado/crime/<estado>/<crime>')
+
+api.add_resource(Municipios, '/municipios') 
+
 api.add_resource(UserById, '/users/<id>/<sexo>') 
 
 # Rotas Alice

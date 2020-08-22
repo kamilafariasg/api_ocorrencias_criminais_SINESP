@@ -1,4 +1,6 @@
 import json
+import unicodedata
+import numpy as np
 
 # Dicionarios de siglas e estados
 estados = '{"AC": "Acre","AL": "Alagoas","AP": "Amapá","AM": "Amazonas","BA": "Bahia","CE": "Ceará","DF": "Distrito Federal","ES": "Espírito Santo","GO": "Goiás","MA": "Maranhão","MT": "Mato Grosso","MS": "Mato Grosso do Sul","MG": "Minas Gerais","PA": "Pará","PB": "Paraíba","PR": "Paraná","PE": "Pernambuco","PI": "Piauí","RJ": "Rio de Janeiro","RN": "Rio Grande do Norte","RS": "Rio Grande do Sul","RO": "Rondônia","RR": "Roraima","SC": "Santa Catarina","SP": "São Paulo","SE": "Sergipe","TO": "Tocantins"}'
@@ -79,3 +81,37 @@ def pega_meses_intervalo(mes_ini, mes_fim):
     index_fim = meses_vetor.index(mes_fim)
     return meses_vetor[index_ini:index_fim+1]
 
+def data_inicio_eh_maior_data_fim(data_inicio, data_fim):
+    meses_ano = pega_meses_maiores("janeiro")
+    mes_ini = pega_mes(data_inicio)
+    ano_ini = int(pega_ano(data_inicio))
+    mes_fim = pega_mes(data_fim)
+    ano_fim = int(pega_ano(data_fim))
+
+    if ano_ini>ano_fim:
+        return True
+    elif ano_fim == ano_ini:
+        index_ini = meses_vetor.index(mes_ini)
+        index_fim = meses_vetor.index(mes_fim)
+        if index_ini>index_fim:
+            return True
+        else:
+            return False
+    else:
+        return False
+
+def tira_acentos(s):
+   return ''.join(c for c in unicodedata.normalize('NFD', s)
+                  if unicodedata.category(c) != 'Mn')
+
+def trata_palavra(palavra):
+    palavra = palavra.replace("-"," ")
+    palavra = tira_acentos(palavra)
+    palavra = palavra.lower()
+    return palavra
+
+def trata_vetor_palavra(vetor):
+    vetor_tratado = []
+    for palavra in vetor:
+        vetor_tratado.append([trata_palavra(palavra)])
+    return np.array(vetor_tratado)

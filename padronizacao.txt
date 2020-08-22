@@ -13,7 +13,6 @@ Tirar os acentos:
 https://stackoverflow.com/questions/517923/what-is-the-best-way-to-remove-accents-normalize-in-a-python-unicode-string
 
 
-# Fazer busca com data, 
-# Fazer busca com crime
+# Fazer o vítimas
 # Fazer busca com cidade
 # Mandar link e explicar oq é cada pasta e arquivo
