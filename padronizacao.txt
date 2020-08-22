@@ -12,7 +12,10 @@ usar a função "converte_sigla_em_nome" para converter no nome do estado
 Tirar os acentos: 
 https://stackoverflow.com/questions/517923/what-is-the-best-way-to-remove-accents-normalize-in-a-python-unicode-string
 
+4 - Se a pessoa digitar as datas invertidas retornar = []
+5 - evitar erros (500), usar try cacht nos métodos get
 
-# Fazer o vítimas
+# comentar
+# escrever padronizacao de nomes com espaço
 # Fazer busca com cidade
 # Mandar link e explicar oq é cada pasta e arquivo
