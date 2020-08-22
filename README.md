@@ -50,6 +50,8 @@ Quando as funções forem divididas para cada integrante:
 
 - Caso precise, crie outros arquivos
 
+- Criei uma rota pra cada um, que é o seu nome, só pra testar
+
 # Padronização das rotas (e outras coisas):
 
 1. Estados: <br/>
