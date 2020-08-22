@@ -1,8 +1,16 @@
 import pandas as pd
-from dicionario import converte_sigla_em_nome
-from dicionario import pega_mes
-from dicionario import pega_ano
-from dicionario import converte_para_data
+import numpy as np
+
+from func_auxiliares import converte_sigla_em_nome
+from func_auxiliares import pega_mes
+from func_auxiliares import pega_ano
+from func_auxiliares import converte_para_data
+from func_auxiliares import pega_meses_maiores
+from func_auxiliares import pega_meses_menores
+from func_auxiliares import pega_meses_intervalo
+from func_auxiliares import trata_vetor_palavra
+from func_auxiliares import trata_palavra
+from func_auxiliares import data_inicio_eh_maior_data_fim
 
 class Alice:
     def __init__(self):

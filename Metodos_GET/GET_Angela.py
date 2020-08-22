@@ -10,5 +10,9 @@ f_angela = Angela()
 
 class metodo_get_angela(Resource):
     def get(self):
-        result = f_angela.funcao_angela()
-        return jsonify(result)
+        try:
+            result = f_angela.funcao_angela()
+        except:
+            result = []
+        finally:
+            return jsonify(result)

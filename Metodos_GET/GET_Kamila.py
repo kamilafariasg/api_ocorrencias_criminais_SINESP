@@ -10,5 +10,9 @@ f_kamila = Kamila()
 
 class metodo_get_kamila(Resource):
     def get(self):
-        result = f_kamila.funcao_kamila()
-        return jsonify(result)
+        try:
+            result = f_kamila.funcao_kamila()
+        except:
+            result = []
+        finally:
+            return jsonify(result)

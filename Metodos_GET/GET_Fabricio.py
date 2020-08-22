@@ -10,5 +10,9 @@ f_fabricio = Fabricio()
 
 class metodo_get_fabricio(Resource):
     def get(self):
-        result = f_fabricio.funcao_fabricio()
-        return jsonify(result)
+        try:
+            result = f_fabricio.funcao_fabricio()
+        except:
+            result = []
+        finally:
+            return jsonify(result)

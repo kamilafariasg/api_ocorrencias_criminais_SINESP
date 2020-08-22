@@ -10,5 +10,9 @@ f_alice = Alice()
 
 class metodo_get_alice(Resource):
     def get(self):
-        result = f_alice.funcao_alice()
-        return jsonify(result)
+        try:
+            result = f_alice.funcao_alice()
+        except:
+            result = []
+        finally:
+            return jsonify(result)

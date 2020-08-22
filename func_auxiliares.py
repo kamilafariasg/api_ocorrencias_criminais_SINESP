@@ -2,10 +2,11 @@ import json
 import unicodedata
 import numpy as np
 
-# Dicionarios de siglas e estados
+
+### Hugo
+
 estados = '{"AC": "Acre","AL": "Alagoas","AP": "Amapá","AM": "Amazonas","BA": "Bahia","CE": "Ceará","DF": "Distrito Federal","ES": "Espírito Santo","GO": "Goiás","MA": "Maranhão","MT": "Mato Grosso","MS": "Mato Grosso do Sul","MG": "Minas Gerais","PA": "Pará","PB": "Paraíba","PR": "Paraná","PE": "Pernambuco","PI": "Piauí","RJ": "Rio de Janeiro","RN": "Rio Grande do Norte","RS": "Rio Grande do Sul","RO": "Rondônia","RR": "Roraima","SC": "Santa Catarina","SP": "São Paulo","SE": "Sergipe","TO": "Tocantins"}'
 estados_json = json.loads(estados)
-#print(estados_json["CE"]) 
 
 meses_ab_numero = '{"jan":"01", "fev":"02", "mar":"03", "abr":"04", "mai":"05", "jun":"06", "jul":"07", "ago":"08", "set":"09", "out":"10", "nov":"11", "dez":"12"}'
 meses_ab_numero_json = json.loads(meses_ab_numero)
@@ -115,3 +116,15 @@ def trata_vetor_palavra(vetor):
     for palavra in vetor:
         vetor_tratado.append([trata_palavra(palavra)])
     return np.array(vetor_tratado)
+
+### Alice
+
+### Angela
+
+### Fabricio
+
+### Kamila
+
+### Renato
+
+### Thiago

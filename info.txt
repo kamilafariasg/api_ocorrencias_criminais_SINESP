@@ -1,17 +1,21 @@
+Informações sobre instalação 
 Instalar o Python3
-Bibliotecas Intalação (Linux)
-    pip3 install flask flask-jsonpify flask-sqlalchemy flask-restful
+
+Bibliotecas Instalação (Linux)
+    pip3 install flask flask-jsonpify flask-restful
     pip3 install pandas
     pip3 install xlrd
 
-* Não precisei, mas deve ter que instalar
+* Não precisei instalar, mas deve ter que instalar no servidor AWS (Ou no seu pc)
 - pandas
+- numpy
 - json
 - requests
 - urllib
 
-Para rodar o sistema: python3 server.py
+Para rodar a api: python3 server.py
 
-Kill Processo em uma Porta (Linux)
+###
+Derrumar um processo em uma porta (Linux)
 lsof -i :PORT #pesquiso
 kill -9 PID #kill

@@ -10,5 +10,9 @@ f_renato = Renato()
 
 class metodo_get_renato(Resource):
     def get(self):
-        result = f_renato.funcao_renato()
-        return jsonify(result)
+        try:
+            result = f_renato.funcao_renato()
+        except:
+            result = []
+        finally:
+            return jsonify(result)

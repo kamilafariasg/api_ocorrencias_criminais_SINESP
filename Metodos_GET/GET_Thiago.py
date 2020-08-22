@@ -10,5 +10,9 @@ f_thiago = Thiago()
 
 class metodo_get_thiago(Resource):
     def get(self):
-        result = f_thiago.funcao_thiago()
-        return jsonify(result)
+        try:
+            result = f_thiago.funcao_thiago()
+        except:
+            result = []
+        finally:
+            return jsonify(result)
