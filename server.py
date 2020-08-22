@@ -22,8 +22,12 @@ from Metodos_GET.GET_Thiago import *
 # Rotas Hugo
 api.add_resource(Municipios, '/municipios') 
 api.add_resource(Est_ocorrencias, '/estados_ocorrencias')
-api.add_resource(Est_ocorrencias_estado, '/estados_ocorrencias/<estado>')
-api.add_resource(Est_ocorrencias_estado_datas, '/estados_ocorrencias/<estado>/<data_inicio>/<data_fim>')
+api.add_resource(Est_ocorrencias_estado, '/estados_ocorrencias/<sigla>')
+api.add_resource(Est_ocorrencias_estado_datas, '/estados_ocorrencias/<sigla>/<data_inicio>/<data_fim>')
+
+#api.add_resource(Est_ocorrencias_crimes, '/estados_ocorrencias/<crime>')
+#api.add_resource(Est_ocorrencias_crimes_datas, '/estados_ocorrencias/<crime>/<data_inicio>/<data_fim>')
+#api.add_resource(Est_ocorrencias_estado_crimes_datas, '/estados_ocorrencias/<estado>/<crime>/<data_inicio>/<data_fim>')
 
 api.add_resource(Est_vitimas, '/estados_vitimas') 
 api.add_resource(UserById, '/users/<id>/<sexo>') 

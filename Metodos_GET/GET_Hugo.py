@@ -19,13 +19,13 @@ class Est_ocorrencias(Resource):
         return jsonify(result)
 
 class Est_ocorrencias_estado(Resource):
-    def get(self, estado):
-        result = f_hugo.est_ocorrencias_estado(estado)
+    def get(self, sigla):
+        result = f_hugo.est_ocorrencias_estado(sigla)
         return jsonify(result)
 
 class Est_ocorrencias_estado_datas(Resource):
-    def get(self, estado, data_inicio, data_fim):
-        result = f_hugo.est_ocorrencias_estados_datas(estado, data_inicio, data_fim)
+    def get(self, sigla, data_inicio, data_fim):
+        result = f_hugo.est_ocorrencias_estados_datas(sigla, data_inicio, data_fim)
         return jsonify(result)
 
 class Est_vitimas(Resource):

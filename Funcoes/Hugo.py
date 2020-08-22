@@ -1,8 +1,13 @@
 import pandas as pd
+import numpy as np
+
 from dicionario import converte_sigla_em_nome
 from dicionario import pega_mes
 from dicionario import pega_ano
 from dicionario import converte_para_data
+from dicionario import pega_meses_maiores
+from dicionario import pega_meses_menores
+from dicionario import pega_meses_intervalo
 
 class Hugo:
     def __init__(self):
@@ -51,9 +56,73 @@ class Hugo:
         result = result.values.tolist()
         return result
     
-    def est_ocorrencias_estados_datas(self, estado, data_inicio, data_fim):
-        #result = self.df_estado["Ocorrências"].values.tolist()
-        return [estado, data_inicio, data_fim]
+    def est_ocorrencias_estados_datas(self, sigla, data_inicio, data_fim):
+        estado = converte_sigla_em_nome(sigla)
+        mes_ini = pega_mes(data_inicio)
+        maiores_mes_ini = pega_meses_maiores(mes_ini)
+        ano_ini = int(pega_ano(data_inicio))
+        mes_fim = pega_mes(data_fim)
+        menores_mes_fim = pega_meses_menores(mes_fim)
+        ano_fim = int(pega_ano(data_fim))
+
+        if ano_ini == ano_fim:
+            maiores_mes_ini = pega_meses_intervalo(mes_ini, mes_fim)
+            menores_mes_fim = maiores_mes_ini
+
+        #Condicao 1
+        cond_estado = np.transpose(np.array([self.df_estado["Ocorrências"]["UF"] == estado]))
+
+        #Condicao 2
+        cond_anos_maiores = np.transpose(np.array([self.df_estado["Ocorrências"]["Ano"] > ano_ini]))
+
+        #Condicao 3
+        cond_anos_menores = np.transpose(np.array([self.df_estado["Ocorrências"]["Ano"] < ano_fim]))
+
+        #Condicao 4
+        cond_ano_ini = np.transpose(np.array([self.df_estado["Ocorrências"]["Ano"] == ano_ini]))
+
+        cond_meses_ano_ini = []
+        for mes in self.df_estado["Ocorrências"]["Mês"]:
+            x = 0
+            for mesX in maiores_mes_ini:
+                if mes == mesX:
+                    cond_meses_ano_ini.append([1])
+                    x = 1
+                    break 
+            if x == 0:
+                cond_meses_ano_ini.append([0])
+
+        cond_meses_ano_ini = np.array(cond_meses_ano_ini, dtype=bool)
+        cond_estado_ano_ini = np.logical_and(cond_estado, cond_ano_ini)
+        cond_meses_ano_ini = np.logical_and(cond_meses_ano_ini, cond_estado_ano_ini)
+
+        #Condicao 5
+        cond_ano_fim = np.transpose(np.array([self.df_estado["Ocorrências"]["Ano"] == ano_fim]))
+
+        cond_meses_ano_fim = []
+        for mes in self.df_estado["Ocorrências"]["Mês"]:
+            x = 0
+            for mesX in menores_mes_fim:
+                if mes == mesX:
+                    cond_meses_ano_fim.append([1])
+                    x = 1
+                    break 
+            if x == 0:
+                cond_meses_ano_fim.append([0])
+
+        cond_meses_ano_fim = np.array(cond_meses_ano_fim, dtype=bool)
+        cond_estado_ano_fim = np.logical_and(cond_estado, cond_ano_fim)
+        cond_meses_ano_fim = np.logical_and(cond_meses_ano_fim, cond_estado_ano_fim)
+
+        condicao = np.logical_and(cond_estado, cond_anos_maiores)
+        condicao = np.logical_and(condicao, cond_anos_menores)
+        condicao = np.logical_or(condicao, cond_meses_ano_ini)
+        condicao = np.logical_or(condicao, cond_meses_ano_fim)
+
+        result = self.df_estado["Ocorrências"][condicao]
+
+        result = result.values.tolist()
+        return result
 
     def estado_vitimas(self):
         result = self.df_estado["Vítimas"].values.tolist()

@@ -11,6 +11,8 @@ meses_ab_numero_json = json.loads(meses_ab_numero)
 meses_ab_nome = '{"jan":"janeiro", "fev":"fevereiro", "mar":"março", "abr":"abril", "mai":"maio", "jun":"junho", "jul":"julho", "ago":"agosto", "set":"setembro", "out":"outubro", "nov":"novembro", "dez":"dezembro"}'
 meses_ab_nome_json = json.loads(meses_ab_nome)
 
+meses_vetor = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"]
+
 def converte_sigla_em_nome(sigla): 
     try:
         retorno = estados_json[sigla]
@@ -63,3 +65,17 @@ def converte_para_data(var):
         retorno = []
     finally:
         return retorno
+
+def pega_meses_maiores(mes):
+    index = meses_vetor.index(mes)
+    return meses_vetor[index:]
+
+def pega_meses_menores(mes):
+    index = meses_vetor.index(mes)
+    return meses_vetor[0:index+1]
+
+def pega_meses_intervalo(mes_ini, mes_fim):
+    index_ini = meses_vetor.index(mes_ini)
+    index_fim = meses_vetor.index(mes_fim)
+    return meses_vetor[index_ini:index_fim+1]
+
