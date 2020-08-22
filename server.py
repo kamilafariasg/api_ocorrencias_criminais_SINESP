@@ -46,4 +46,4 @@ api.add_resource(metodo_get_renato, '/renato')
 api.add_resource(metodo_get_thiago, '/thiago') 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="localhost", port=3000)

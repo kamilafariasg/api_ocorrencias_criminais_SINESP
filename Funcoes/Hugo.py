@@ -1,4 +1,5 @@
 import pandas as pd
+from dicionario_estados import converte_sigla
 
 class Hugo:
     def __init__(self):
@@ -41,7 +42,8 @@ class Hugo:
         result = result.values.tolist()
         return result
 
-    def base_est_ocorrencias_estado(self, estado):
+    def base_est_ocorrencias_estado(self, sigla):
+        estado = converte_sigla(sigla)
         result = self.df_estado["Ocorrências"][self.df_estado["Ocorrências"]["UF"] == estado]
         result = result.values.tolist()
         return result
