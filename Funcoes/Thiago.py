@@ -1,4 +1,8 @@
 import pandas as pd
+from dicionario import converte_sigla_em_nome
+from dicionario import pega_mes
+from dicionario import pega_ano
+from dicionario import converte_para_data
 
 class Thiago:
     def __init__(self):

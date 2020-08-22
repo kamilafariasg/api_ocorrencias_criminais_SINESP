@@ -1,12 +1,15 @@
 import pandas as pd
-from dicionario_estados import converte_sigla
+from dicionario import converte_sigla_em_nome
+from dicionario import pega_mes
+from dicionario import pega_ano
+from dicionario import converte_para_data
 
 class Hugo:
     def __init__(self):
         self.df_municipio = pd.read_excel('Bases/base_por_municipio.xlsx', sheet_name=["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"])
         self.df_estado = pd.read_excel('Bases/base_por_estado.xlsx', sheet_name=['Ocorrências','Vítimas'])
 
-    def base_municipio(self):
+    def municipio(self):
         result = self.df_municipio["AC"]
         result = result.append(self.df_municipio["AL"])
         result = result.append(self.df_municipio["AP"])
@@ -37,21 +40,21 @@ class Hugo:
         result = result.values.tolist()
         return result
 
-    def base_est_ocorrencias(self):
+    def est_ocorrencias(self):
         result = self.df_estado["Ocorrências"]
         result = result.values.tolist()
         return result
 
-    def base_est_ocorrencias_estado(self, sigla):
-        estado = converte_sigla(sigla)
+    def est_ocorrencias_estado(self, sigla):
+        estado = converte_sigla_em_nome(sigla)
         result = self.df_estado["Ocorrências"][self.df_estado["Ocorrências"]["UF"] == estado]
         result = result.values.tolist()
         return result
     
-    def base_est_ocorrencias_estados_datas(self, estado, data_inicio, data_fim):
+    def est_ocorrencias_estados_datas(self, estado, data_inicio, data_fim):
         #result = self.df_estado["Ocorrências"].values.tolist()
         return [estado, data_inicio, data_fim]
 
-    def base_estado_vitimas(self):
+    def estado_vitimas(self):
         result = self.df_estado["Vítimas"].values.tolist()
         return result

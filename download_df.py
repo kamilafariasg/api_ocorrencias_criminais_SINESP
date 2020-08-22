@@ -7,7 +7,7 @@ def download():
     url_api_dados = "http://dados.gov.br/api/rest/dataset/sistema-nacional-de-estatisticas-de-seguranca-publica"
     r = requests.get(url_api_dados)
 
-    # Pegando o conteudo, para pegar os links das bases
+    # Pegando o conteudo do retorno, para entao pegar os links das bases de dados
     conteudo = json.loads(r.content)
 
     #url_municipio = "http://dados.mj.gov.br/dataset/210b9ae2-21fc-4986-89c6-2006eb4db247/resource/03af7ce2-174e-4ebd-b085-384503cfb40f/download/indicadoressegurancapublicamunicmar20.xlsx"

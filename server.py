@@ -1,15 +1,16 @@
 from flask import Flask
 from flask_restful import Api
 
-# A sessão esta comentada para rodar mais rápido(Testes)
+# A sessão a seguir esta comentada para rodar mais rápido(Testes)
 """
-from download_df import download #comentado pra executar mais rapido
-download()
+from download_df import download
+download() #download das bases
 """
 
 app = Flask(__name__)
 api = Api(app)
 
+# Metodos GET da API
 from Metodos_GET.GET_Alice import *
 from Metodos_GET.GET_Angela import *
 from Metodos_GET.GET_Fabricio import *
