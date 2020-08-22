@@ -18,7 +18,7 @@
 /Insomnia_requisicoes_GET.json  
 - São as requisições GET para JSON
 - Para importar no Insomnia: 
-- Application/Preferences/Data/Import Data/From file
+    - Application/Preferences/Data/Import Data/From file
 
 /Bases/ 
 - Nessa pasta estão as duas bases de dados(formato xlsx)
@@ -52,42 +52,42 @@ Quando as funções forem divididas para cada integrante:
 
 # Padronização das rotas (e outras coisas):
 
-1. Estados: 
-    Sempre que nas rotas(url) tiver que passar um estado, sempre usar siglas em maiúsculo
-    Exemplo: "/CE/"
-    A função "converte_sigla_em_nome" converte no uma sigla em nome do estado
+1. Estados: <br/>
+    Sempre que nas rotas(url) tiver que passar um estado, sempre usar siglas em maiúsculo<br/>
+    Exemplo: "/CE/"<br/>
+    A função "converte_sigla_em_nome" converte no uma sigla em nome do estado<br/>
 
-2. Datas:
+2. Datas:<br/>
     Nas rotas usar o formato "jan-2019", mês abreviado e separado por "-"<br/>
-    Exemplo: "fev-2019"
-    Usar funções:
-    "pega_mes" para converter a string "jan-2019" em "janeiro" (Para base de estados)
-    "pega_ano" para converter a string "jan-2019" em "2019" (Para base de estados)
-    "converte_para_data" para converter a string "jan-2019" em "2019-01-01" (Para base de cidades) (Não ta pronto)
+    Exemplo: "fev-2019"<br/>
+    Usar funções:<br/>
+    "pega_mes" para converter a string "jan-2019" em "janeiro" (Para base de estados)<br/>
+    "pega_ano" para converter a string "jan-2019" em "2019" (Para base de estados)<br/>
+    "converte_para_data" para converter a string "jan-2019" em "2019-01-01" (Para base de cidades) (Não ta pronto)<br/>
     
-2.1 - Ordem das Datas: 
-        Sempre que usar datas, colocar primeiro a data inicial e depois a data final
-        E incluir sempre os meses de inicio e fim
-        Exemplo: /jan-2017/ago-2019/ 
-                Uma busca de janeiro de 2017 até agosto de 2019
+3 - Ordem das Datas: <br/>
+        Sempre que usar datas, colocar primeiro a data inicial e depois a data final<br/>
+        E incluir sempre os meses de inicio e fim<br/>
+        Exemplo: /jan-2017/ago-2019/ <br/>
+                Uma busca de janeiro de 2017 até agosto de 2019<br/>
 
-3. Nomes de Crimes e Cidades:
-    Nas rotas quando o crime/cidade for formado por duas ou mais palavras, usar "-" para separa-las 
-    Exemplo: para a cidade "Cruzeiro do Sul" -> /Cruzeiro-do-Sul/
-    Na url o nome do crime deve ser o mesmo que o desejado para a busca
-    Pode variar entre maiúsculas e minúsculas, acentuadas e não acentuadas
-    Exemplo: Para o crime "Roubo seguido de morte (latrocínio)" são aceitos os formatos: 
+4. Nomes de Crimes e Cidades:<br/>
+    Nas rotas quando o crime/cidade for formado por duas ou mais palavras, usar "-" para separa-las <br/>
+    Exemplo: para a cidade "Cruzeiro do Sul" -> /Cruzeiro-do-Sul/<br/>
+    Na url o nome do crime deve ser o mesmo que o desejado para a busca<br/>
+    Pode variar entre maiúsculas e minúsculas, acentuadas e não acentuadas<br/>
+    Exemplo: Para o crime "Roubo seguido de morte (latrocínio)" são aceitos os formatos:
     - /Roubo-seguido-de-morte-(latrocínio)/
     - /ROUBO-segUIdo-de-mORte-(latrocinio)/
     - /Roubo-seguido-de-mórté-(látrócínío)/
-    - /Roubo-seguido-de-morte-(latricinio)/
-    E outras variações
-    Usar as funções:
-    "trata_palavra", que retorna a palavra com espaços no lugar de "-", sem acentos, e minúscula
-    "trata_vetor_palavra", que aplica a função "trata_palavra" para todas as palavras de um vetor, e retorna um array
+    - /Roubo-seguido-de-morte-(latricinio)/<br/>
+    E outras variações<br/>
+    Usar as funções:<br/>
+    "trata_palavra", que retorna a palavra com espaços no lugar de "-", sem acentos, e minúscula<br/>
+    "trata_vetor_palavra", que aplica a função "trata_palavra" para todas as palavras de um vetor, e retorna um array<br/>
 
-4 - Se as datas estiverem invertidas na url, retornar = []
-    Exemplo: /jan-2020/fev-2019/
+5 - Se as datas estiverem invertidas na url, retornar = []<br/>
+    Exemplo: /jan-2020/fev-2019/<br/>
 
-5 - Quando houver erros na url, evitar erros no código que retornam: Internal Server Error: 500
-    Usar try,except nos métodos GET, para sempre que der algo errado retornar = []
+6 - Quando houver erros na url, evitar erros no código que retornam: Internal Server Error: 500<br/>
+    Usar try,except nos métodos GET, para sempre que der algo errado retornar = []<br/>
