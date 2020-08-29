@@ -146,3 +146,12 @@ class Municipios_total(Resource):
             result = []
         finally:
             return jsonify(result)
+
+class Municipios_total_datas(Resource):
+    def get(self, data_inicio, data_fim):
+        try:
+            result = f_hugo.municipios_total_datas(data_inicio, data_fim)
+        except:
+            result = []
+        finally:
+            return jsonify(result)

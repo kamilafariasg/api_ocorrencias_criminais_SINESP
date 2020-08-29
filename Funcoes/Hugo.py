@@ -12,6 +12,7 @@ from func_auxiliares import trata_vetor_palavra
 from func_auxiliares import trata_palavra
 from func_auxiliares import data_inicio_eh_maior_data_fim
 from func_auxiliares import agrupa_por_municipio
+from func_auxiliares import append_municipio
 
 class Hugo:
     def __init__(self):
@@ -316,7 +317,12 @@ class Hugo:
         return result
 
     def municipios_total(self):
-        result = agrupa_por_municipio(self.municipios())
+        base = append_municipio(self.df_municipio)
+
+        result = agrupa_por_municipio(base)
 
         result = result.values.tolist()
         return result
+
+    def municipios_total_datas(self, data_inicio, data_fim):
+        pass

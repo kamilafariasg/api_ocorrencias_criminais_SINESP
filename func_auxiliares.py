@@ -117,8 +117,38 @@ def trata_vetor_palavra(vetor):
         vetor_tratado.append([trata_palavra(palavra)])
     return np.array(vetor_tratado)
 
-def agrupa_por_municipio(municipios):
-    base_mun = pd.DataFrame(municipios,columns=['Município','Sigla UF','Região','Mês/Ano','Vítimas'])
+def append_municipio(df_mun):
+    result = df_mun["AC"]
+    result = result.append(df_mun["AL"])
+    result = result.append(df_mun["AP"])
+    result = result.append(df_mun["AM"])
+    result = result.append(df_mun["BA"])
+    result = result.append(df_mun["CE"])
+    result = result.append(df_mun["DF"])
+    result = result.append(df_mun["ES"])
+    result = result.append(df_mun["GO"])
+    result = result.append(df_mun["MA"])
+    result = result.append(df_mun["MT"])
+    result = result.append(df_mun["MS"])
+    result = result.append(df_mun["MG"])
+    result = result.append(df_mun["PA"])
+    result = result.append(df_mun["PB"])
+    result = result.append(df_mun["PR"])
+    result = result.append(df_mun["PE"])
+    result = result.append(df_mun["PI"])
+    result = result.append(df_mun["RJ"])
+    result = result.append(df_mun["RN"])
+    result = result.append(df_mun["RS"])
+    result = result.append(df_mun["RO"])
+    result = result.append(df_mun["RR"])
+    result = result.append(df_mun["SC"])
+    result = result.append(df_mun["SP"])
+    result = result.append(df_mun["SE"])
+    result = result.append(df_mun["TO"])
+    return result
+
+def agrupa_por_municipio(base_mun):
+    #base_mun = pd.DataFrame(municipios,columns=['Município','Sigla UF','Região','Mês/Ano','Vítimas'])
     base_mun[['Município']] = base_mun[['Município']].apply(lambda x: x.str.lower())
     new_base = base_mun.groupby(['Município','Sigla UF','Região']).agg(['sum', 'count']).reset_index()
     new_base.columns = new_base.columns.droplevel()
