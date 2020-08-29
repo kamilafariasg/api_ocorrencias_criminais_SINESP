@@ -43,6 +43,7 @@ api.add_resource(Est_vitimas_estado_crime, '/estados_vitimas/estado/crime/<sigla
 api.add_resource(Est_vitimas_estado_crime_datas, '/estados_vitimas/estado/crime/<sigla>/<crime>/<data_inicio>/<data_fim>')
 
 api.add_resource(Municipios, '/municipios') 
+api.add_resource(Municipios_total, '/municipios/total')
 
 ### Rotas Alice
 api.add_resource(metodo_get_alice, '/alice') 

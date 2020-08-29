@@ -282,7 +282,7 @@ class Hugo:
         result = result.values.tolist()
         return result
 
-    def municipio(self):
+    def municipios(self):
         result = self.df_municipio["AC"]
         result = result.append(self.df_municipio["AL"])
         result = result.append(self.df_municipio["AP"])
@@ -311,4 +311,13 @@ class Hugo:
         result = result.append(self.df_municipio["SE"])
         result = result.append(self.df_municipio["TO"])
         result = result.values.tolist()
+        return result
+
+    def municipios_total(self):
+        base_mun = pd.DataFrame(self.municipios(),columns=['Município','Sigla UF','Região','Mês/Ano','Vítimas'])
+        new_base = base_mun.groupby(['Município','Sigla UF','Região']).agg(['sum', 'count']).reset_index()
+        new_base.columns = new_base.columns.droplevel()
+        new_base.columns = ['Município','Sigla UF','Região','Quant_Vítimas', 'Quant_Instâncias']
+
+        result = new_base.values.tolist()
         return result

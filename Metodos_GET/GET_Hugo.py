@@ -132,7 +132,16 @@ class Est_vitimas_estado_crime_datas(Resource):
 class Municipios(Resource):
     def get(self):
         try:
-            result = f_hugo.municipio()
+            result = f_hugo.municipios()
+        except:
+            result = []
+        finally:
+            return jsonify(result)
+
+class Municipios_total(Resource):
+    def get(self):
+        try:
+            result = f_hugo.municipios_total()
         except:
             result = []
         finally:
