@@ -2,10 +2,10 @@ from flask import Flask
 from flask_restful import Api
 
 # A sessão a seguir esta comentada para rodar mais rápido(para os Testes)
-"""
+'''
 from download_df import download
 download() #download das bases
-"""
+'''
 
 app = Flask(__name__)
 api = Api(app)

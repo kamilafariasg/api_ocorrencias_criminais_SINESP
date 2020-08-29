@@ -11,6 +11,8 @@ from func_auxiliares import pega_meses_intervalo
 from func_auxiliares import trata_vetor_palavra
 from func_auxiliares import trata_palavra
 from func_auxiliares import data_inicio_eh_maior_data_fim
+from func_auxiliares import agrupa_por_municipio
+
 class Hugo:
     def __init__(self):
         self.df_municipio = pd.read_excel('Bases/base_por_municipio.xlsx', sheet_name=["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"])
@@ -314,10 +316,7 @@ class Hugo:
         return result
 
     def municipios_total(self):
-        base_mun = pd.DataFrame(self.municipios(),columns=['Município','Sigla UF','Região','Mês/Ano','Vítimas'])
-        new_base = base_mun.groupby(['Município','Sigla UF','Região']).agg(['sum', 'count']).reset_index()
-        new_base.columns = new_base.columns.droplevel()
-        new_base.columns = ['Município','Sigla UF','Região','Quant_Vítimas', 'Quant_Instâncias']
+        result = agrupa_por_municipio(self.municipios())
 
-        result = new_base.values.tolist()
+        result = result.values.tolist()
         return result

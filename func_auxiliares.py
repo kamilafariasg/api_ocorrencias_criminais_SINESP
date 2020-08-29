@@ -1,7 +1,7 @@
 import json
 import unicodedata
 import numpy as np
-
+import pandas as pd
 
 ### Hugo
 
@@ -116,6 +116,15 @@ def trata_vetor_palavra(vetor):
     for palavra in vetor:
         vetor_tratado.append([trata_palavra(palavra)])
     return np.array(vetor_tratado)
+
+def agrupa_por_municipio(municipios):
+    base_mun = pd.DataFrame(municipios,columns=['Município','Sigla UF','Região','Mês/Ano','Vítimas'])
+    base_mun[['Município']] = base_mun[['Município']].apply(lambda x: x.str.lower())
+    new_base = base_mun.groupby(['Município','Sigla UF','Região']).agg(['sum', 'count']).reset_index()
+    new_base.columns = new_base.columns.droplevel()
+    new_base.columns = ['Município','Sigla UF','Região','Quant_Vítimas', 'Quant_Instâncias']
+
+    return new_base
 
 ### Alice
 
