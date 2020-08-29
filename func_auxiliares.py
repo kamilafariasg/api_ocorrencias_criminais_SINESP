@@ -106,7 +106,7 @@ def tira_acentos(s):
                   if unicodedata.category(c) != 'Mn')
 
 def trata_palavra(palavra):
-    palavra = palavra.replace("-"," ")
+    palavra = palavra.replace("_"," ")
     palavra = tira_acentos(palavra)
     palavra = palavra.lower()
     return palavra
